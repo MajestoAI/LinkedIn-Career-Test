@@ -95,10 +95,11 @@
             iframe.allowfullscreen = true;
             iframe.style.display = 'block'; // Show iframe when it is ready
 
+            // Add the referrer policy to handle cross-domain issues in Firefox
+            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+
             // Append iframe to the container
             videoPlayerContainer.appendChild(iframe);
-
-            // Optional: Adjust the iframe to resize based on screen size, it will already be full screen due to CSS
         });
     </script>
 </body>
