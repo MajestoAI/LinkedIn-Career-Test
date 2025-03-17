@@ -58,11 +58,11 @@
     </div>
 
     <script>
-        // Array of Google Drive video file URLs (with the proper "uc?id=" link)
+        // Array of GitHub-hosted video file URLs
         const videoFileUrls = [
-            'https://drive.google.com/uc?id=1b99UOQUcWjmjKTPuh2wHJcinwq60DnfI',
-            'https://drive.google.com/uc?id=1_WXahZpeeA4Mq_a_z_b97Bp2pPeHfdv-',
-            'https://drive.google.com/uc?id=1W_zAl47kXytmsJWQL0bc92eZWk8AQj7q',
+            'https://github.com/MajestoAI/LinkedIn-Career-Test/raw/refs/heads/main/LinkedIn%20Career%20Test%20Crypto%20Boy%20Version_1.mp4',
+            'https://github.com/MajestoAI/LinkedIn-Career-Test/raw/refs/heads/main/LinkedIn%20Career%20Test%20Crypto%20Man%20Version_1.mp4',
+            'https://github.com/MajestoAI/LinkedIn-Career-Test/raw/refs/heads/main/LinkedIn%20Career%20Test%20Gamer_1.mp4',
         ];
 
         // Select the initiate button
@@ -86,13 +86,13 @@
             // Set the video source to the randomly selected URL
             const sourceElement = document.createElement('source');
             sourceElement.setAttribute('src', randomVideoUrl);
-            sourceElement.setAttribute('type', 'video/mp4'); // Set the video type (can be .webm or other types)
+            sourceElement.setAttribute('type', 'video/mp4'); // Set the video type (use .mp4 or other types)
 
             // Append the source to the video element
             videoElement.appendChild(sourceElement);
 
-            // Clear any previous video content and inject the new video element
-            videoPlayerContainer.innerHTML = '';  // Clear previous content (remove the button)
+            // Clear previous content and inject the new video element
+            videoPlayerContainer.innerHTML = '';  // Clear previous content
             videoPlayerContainer.appendChild(videoElement);  // Add the video element
 
             // Play the video
