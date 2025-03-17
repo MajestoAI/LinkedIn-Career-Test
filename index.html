@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Video Player</title>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        #video-player-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-player-container">
+        <h1>Welcome to Our Video Collection!</h1>
+        <p>Enjoy a random video from our curated collection.</p>
+        <iframe id="vimeo-player" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        // Array of Vimeo video links (unlisted video URLs)
+        const videoLinks = [
+            "https://vimeo.com/1066637397",
+            "https://vimeo.com/1066637287/11d4dff9de",
+            "https://vimeo.com/1066637528",
+            "https://vimeo.com/1066637771",
+            "https://vimeo.com/1066637648",
+            "https://vimeo.com/1066637904",
+            "https://vimeo.com/1066638174",
+            "https://vimeo.com/1066638042",
+            "https://vimeo.com/1066638582",
+            "https://vimeo.com/1066638301",
+            "https://vimeo.com/1066638441",
+            "https://vimeo.com/1066638681",
+
+        // Pick a random video link from the array
+        const randomVideo = videoLinks[Math.floor(Math.random() * videoLinks.length)];
+
+        // Get the Vimeo player iframe element
+        const playerIframe = document.getElementById('vimeo-player');
+
+        // Set the source of the iframe to the randomly selected video URL
+        playerIframe.src = randomVideo + "?autoplay=1";  // Adding autoplay to the URL
+
+        // Optionally, add events after the video ends
+        const player = new Vimeo.Player(playerIframe);
+        player.on('ended', function() {
+            console.log("Video ended");
+            // You can trigger another action after the video ends if you wish
+        });
+    </script>
+</body>
+</html>
