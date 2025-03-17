@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Video Player</title>
-    <script src="https://player.vimeo.com/api/player.js"></script>
     <style>
         body {
             margin: 0;
@@ -29,7 +28,7 @@
             font-size: 20px;
             font-weight: bold;
             color: #fff;
-            background-color: #4CAF50;
+            background-color: #6A0DAD; /* Purple background */
             padding: 20px 40px;
             cursor: pointer;
             border: none;
@@ -39,7 +38,7 @@
         }
 
         #initiate-button:hover {
-            background-color: #45a049;
+            background-color: #5A0A9A; /* Slightly darker purple on hover */
         }
 
         iframe {
@@ -60,20 +59,11 @@
     </div>
 
     <script>
-        // Array of Vimeo video links (unlisted video URLs)
-        const videoLinks = [
-            "https://vimeo.com/1066637397",
-            "https://vimeo.com/1066637287/11d4dff9de",
-            "https://vimeo.com/1066637528",
-            "https://vimeo.com/1066637771",
-            "https://vimeo.com/1066637648",
-            "https://vimeo.com/1066637904",
-            "https://vimeo.com/1066638174",
-            "https://vimeo.com/1066638042",
-            "https://vimeo.com/1066638582",
-            "https://vimeo.com/1066638301",
-            "https://vimeo.com/1066638441",
-            "https://vimeo.com/1066638681",
+        // Array of Vimeo embed codes (instead of just the video URLs)
+        const videoEmbedCodes = [
+            '<div style="padding:100% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1066637287?h=11d4dff9de&amp;badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="LinkedIn Career Test Banksy Version"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>',
+            '<div style="padding:100% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1066637528?badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="LinkedIn Career Test Crypto Man Version"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>,
+            '<div style="padding:100% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1066637771?badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="LinkedIn Career Test Goth Version"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>,
         ];
 
         // Select the initiate button
@@ -85,21 +75,11 @@
             // Hide the text button
             initiateButton.style.display = 'none';
 
-            // Pick a random video link from the array
-            const randomVideo = videoLinks[Math.floor(Math.random() * videoLinks.length)];
+            // Pick a random video embed code from the array
+            const randomVideoEmbed = videoEmbedCodes[Math.floor(Math.random() * videoEmbedCodes.length)];
 
-            // Create iframe element to embed the Vimeo player
-            const iframe = document.createElement('iframe');
-            iframe.src = `${randomVideo}?autoplay=1`;  // Autoplay when clicked
-            iframe.allow = "autoplay; fullscreen";  // Allow autoplay and fullscreen
-            iframe.allowfullscreen = true;
-            iframe.style.display = 'block'; // Show iframe when it is ready
-
-            // Add the referrer policy to handle cross-domain issues in Firefox
-            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
-
-            // Append iframe to the container
-            videoPlayerContainer.appendChild(iframe);
+            // Inject the selected embed code into the video container
+            videoPlayerContainer.innerHTML = randomVideoEmbed;  // This will replace the button with the video iframe
         });
     </script>
 </body>
