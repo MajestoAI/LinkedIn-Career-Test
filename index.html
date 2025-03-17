@@ -16,6 +16,7 @@
             background-color: #000;
             color: white;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
         #video-player-container {
@@ -24,21 +25,20 @@
             position: relative;
         }
 
-        #play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        #initiate-button {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
             background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 15px 32px;
-            font-size: 16px;
+            padding: 20px 40px;
             cursor: pointer;
+            border: none;
             border-radius: 5px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
         }
 
-        #play-button:hover {
+        #initiate-button:hover {
             background-color: #45a049;
         }
 
@@ -49,20 +49,20 @@
             position: absolute;
             top: 0;
             left: 0;
-            display: none;  /* Hide iframe initially */
+            display: none; /* Hide iframe initially */
         }
     </style>
 </head>
 <body>
     <div id="video-player-container">
-        <button id="play-button">Play Random Video</button>
+        <button id="initiate-button">INITIATE MAJESTO CAREER APTITUDE TEST</button>
         <!-- Video iframe will be injected here by JavaScript -->
     </div>
 
     <script>
         // Array of Vimeo video links (unlisted video URLs)
         const videoLinks = [
-             "https://vimeo.com/1066637397",
+            "https://vimeo.com/1066637397",
             "https://vimeo.com/1066637287/11d4dff9de",
             "https://vimeo.com/1066637528",
             "https://vimeo.com/1066637771",
@@ -74,15 +74,16 @@
             "https://vimeo.com/1066638301",
             "https://vimeo.com/1066638441",
             "https://vimeo.com/1066638681",
+        ];
 
-        // Select the play button
-        const playButton = document.getElementById('play-button');
+        // Select the initiate button
+        const initiateButton = document.getElementById('initiate-button');
         const videoPlayerContainer = document.getElementById('video-player-container');
 
-        // Handle play button click event
-        playButton.addEventListener('click', () => {
-            // Hide the play button
-            playButton.style.display = 'none';
+        // Handle button click event
+        initiateButton.addEventListener('click', () => {
+            // Hide the text button
+            initiateButton.style.display = 'none';
 
             // Pick a random video link from the array
             const randomVideo = videoLinks[Math.floor(Math.random() * videoLinks.length)];
@@ -102,4 +103,3 @@
     </script>
 </body>
 </html>
-
