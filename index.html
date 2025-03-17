@@ -91,9 +91,14 @@
             // Append the source to the video element
             videoElement.appendChild(sourceElement);
 
-            // Inject the video element into the video container
-            videoPlayerContainer.innerHTML = '';  // Clear previous content
+            // Clear any previous video content and inject the new video element
+            videoPlayerContainer.innerHTML = '';  // Clear previous content (remove the button)
             videoPlayerContainer.appendChild(videoElement);  // Add the video element
+
+            // Play the video
+            videoElement.play().catch(error => {
+                console.log('Error playing the video:', error);
+            });
         });
     </script>
 </body>
