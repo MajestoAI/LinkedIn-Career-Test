@@ -41,14 +41,13 @@
             background-color: #5A0A9A; /* Slightly darker purple on hover */
         }
 
-        iframe {
+        video {
             width: 100%;
             height: 100%;
             border: none;
             position: absolute;
             top: 0;
             left: 0;
-            display: none; /* Hide iframe initially */
         }
     </style>
 </head>
@@ -59,11 +58,11 @@
     </div>
 
     <script>
-        // Array of Vimeo embed codes (instead of just the video URLs)
-        const videoEmbedCodes = [
-            '<div style="padding:100% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1066637287?h=11d4dff9de&amp;badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="LinkedIn Career Test Banksy Version"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>',
-            '<div style="padding:100% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1066637528?badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="LinkedIn Career Test Crypto Man Version"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>',
-            '<div style="padding:100% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1066637771?badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="LinkedIn Career Test Goth Version"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>'
+        // Array of Google Drive video file URLs (with the proper "uc?id=" link)
+        const videoFileUrls = [
+            'https://drive.google.com/uc?id=1b99UOQUcWjmjKTPuh2wHJcinwq60DnfI',
+            'https://drive.google.com/uc?id=1_WXahZpeeA4Mq_a_z_b97Bp2pPeHfdv-',
+            'https://drive.google.com/uc?id=1W_zAl47kXytmsJWQL0bc92eZWk8AQj7q',
         ];
 
         // Select the initiate button
@@ -75,11 +74,26 @@
             // Hide the text button
             initiateButton.style.display = 'none';
 
-            // Pick a random video embed code from the array
-            const randomVideoEmbed = videoEmbedCodes[Math.floor(Math.random() * videoEmbedCodes.length)];
+            // Pick a random video URL from the array
+            const randomVideoUrl = videoFileUrls[Math.floor(Math.random() * videoFileUrls.length)];
 
-            // Inject the selected embed code into the video container
-            videoPlayerContainer.innerHTML = randomVideoEmbed;  // This will replace the button with the video iframe
+            // Create a new video element
+            const videoElement = document.createElement('video');
+            videoElement.setAttribute('controls', 'true');  // Enable controls (play, pause, etc.)
+            videoElement.setAttribute('autoplay', 'true');  // Enable autoplay
+            videoElement.setAttribute('muted', 'false');   // Ensure audio is not muted
+
+            // Set the video source to the randomly selected URL
+            const sourceElement = document.createElement('source');
+            sourceElement.setAttribute('src', randomVideoUrl);
+            sourceElement.setAttribute('type', 'video/mp4'); // Set the video type (can be .webm or other types)
+
+            // Append the source to the video element
+            videoElement.appendChild(sourceElement);
+
+            // Inject the video element into the video container
+            videoPlayerContainer.innerHTML = '';  // Clear previous content
+            videoPlayerContainer.appendChild(videoElement);  // Add the video element
         });
     </script>
 </body>
