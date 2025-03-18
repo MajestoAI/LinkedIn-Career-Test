@@ -26,13 +26,20 @@
 
         #initiate-image {
             cursor: pointer;
-            width: 700px; /* You can adjust the size of the image */
+            width: 100%; /* Default width for mobile */
             height: auto;
             transition: opacity 0.3s ease;
         }
 
         #initiate-image:hover {
             opacity: 0.8; /* Add hover effect for image */
+        }
+
+        /* Media query for larger screens (desktop) */
+        @media (min-width: 768px) {
+            #initiate-image {
+                width: 50%; /* 50% of the screen width on larger devices */
+            }
         }
 
         video {
