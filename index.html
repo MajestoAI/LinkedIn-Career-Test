@@ -24,33 +24,15 @@
             position: relative;
         }
 
-        #initiate-button {
-            font-family: 'Verdana', sans-serif; /* Set font to Verdana */
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #6A0DAD; /* Purple background */
-            padding: 20px 40px;
+        #initiate-image {
             cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-            text-align: center;
+            width: 300px; /* You can adjust the size of the image */
+            height: auto;
+            transition: opacity 0.3s ease;
         }
 
-        #initiate-button:hover {
-            background-color: #5A0A9A; /* Slightly darker purple on hover */
-        }
-
-        #initiate-button span {
-            display: block;
-            font-size: 12px;  /* Smaller font size */
-            font-weight: normal;
-            margin-top: 8px;
-            color: #fff;
-            text-transform: none; /* Prevent text from being uppercase */
+        #initiate-image:hover {
+            opacity: 0.8; /* Add hover effect for image */
         }
 
         video {
@@ -65,10 +47,8 @@
 </head>
 <body>
     <div id="video-player-container">
-        <button id="initiate-button">
-            INITIATE MAJESTO CAREER APTITUDE TEST
-            <span>(then turn up your sound)</span>
-        </button>
+        <!-- Replace the button with an image -->
+        <img id="initiate-image" src="https://raw.githubusercontent.com/MajestoAI/LinkedIn-Career-Test/refs/heads/main/Majesto%20Button.png" alt="Initiate Majesto Career Test">
         <!-- Video iframe will be injected here by JavaScript -->
     </div>
 
@@ -89,14 +69,14 @@
             'https://raw.githubusercontent.com/MajestoAI/LinkedIn-Career-Test/main/LinkedIn%20Career%20Test%20Unknown%20Input%20Error_1.mp4',
         ];
 
-        // Select the initiate button
-        const initiateButton = document.getElementById('initiate-button');
+        // Select the initiate image
+        const initiateImage = document.getElementById('initiate-image');
         const videoPlayerContainer = document.getElementById('video-player-container');
 
-        // Handle button click event
-        initiateButton.addEventListener('click', () => {
-            // Hide the text button
-            initiateButton.style.display = 'none';
+        // Handle image click event
+        initiateImage.addEventListener('click', () => {
+            // Hide the image
+            initiateImage.style.display = 'none';
 
             // Pick a random video URL from the array
             const randomVideoUrl = videoFileUrls[Math.floor(Math.random() * videoFileUrls.length)];
